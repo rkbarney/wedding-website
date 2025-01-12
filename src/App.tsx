@@ -11,14 +11,28 @@ import './App.css';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#9c27b0', // A romantic purple color
+      main: '#89CFF0', // Baby blue
     },
     secondary: {
-      main: '#f50057', // A complementary pink color
+      main: '#FF9E80', // Coral/peach - complementary to baby blue
     },
+    background: {
+      default: '#E6F3FF', // Light baby blue for background
+      paper: '#E6F3FF', // Light baby blue for paper elements
+    },
+    mode: 'light'
   },
   typography: {
     fontFamily: '"Playfair Display", "Roboto", "Arial", sans-serif',
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: '#E6F3FF',
+        },
+      },
+    },
   },
 });
 

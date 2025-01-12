@@ -42,12 +42,15 @@
 }
 
 body {
-  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+  margin: 0;
+  background-color: #E6F3FF !important;
   min-height: 100vh;
 }
 
 .App {
   text-align: center;
+  background-color: #E6F3FF;
+  min-height: 100vh;
 }
 
 /* Add custom scrollbar */

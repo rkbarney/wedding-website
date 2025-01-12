@@ -157,12 +157,14 @@ const Home = () => {
             <Typography
               variant="h3"
               sx={{
-                mb: 2,
-                color: 'primary.main',
+                mt: 4,
+                mb: 6,
+                color: 'secondary.main',
                 fontFamily: '"Playfair Display", serif',
+                fontStyle: 'italic'
               }}
             >
-              May 17, 2024
+              September 20th, 2025
             </Typography>
             <Typography variant="h6">
               In Our Backyard
