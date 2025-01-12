@@ -1,9 +1,26 @@
 import { Container, Typography, Box, Paper } from '@mui/material';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 const Home = () => {
   // Get the base URL for images
   const baseUrl = import.meta.env.BASE_URL;
+  const [isPortrait, setIsPortrait] = useState(false);
+
+  useEffect(() => {
+    const checkOrientation = () => {
+      setIsPortrait(window.innerHeight > window.innerWidth);
+    };
+
+    // Check orientation initially
+    checkOrientation();
+
+    // Add event listener for orientation changes
+    window.addEventListener('resize', checkOrientation);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkOrientation);
+  }, []);
 
   return (
     <Box 
@@ -50,12 +67,20 @@ const Home = () => {
             alt="Biscuit the dog"
             sx={{
               position: 'absolute',
-              top: { xs: '-70px', sm: 20 },
-              left: { xs: '10px', sm: 20 },
-              width: { xs: 80, sm: 120, md: 150 },
-              height: { xs: 80, sm: 120, md: 150 },
+              ...(isPortrait ? {
+                top: '10px',
+                left: '10px',
+                width: '40px',
+                height: '40px',
+              } : {
+                top: { xs: '-70px', sm: 20 },
+                left: { xs: '10px', sm: 20 },
+                width: { xs: 80, sm: 120, md: 150 },
+                height: { xs: 80, sm: 120, md: 150 },
+              }),
               objectFit: 'contain',
               zIndex: 1,
+              display: { xs: 'block', sm: 'block' },
             }}
           />
           <Box
@@ -64,12 +89,20 @@ const Home = () => {
             alt="Buckwheat the cat"
             sx={{
               position: 'absolute',
-              top: { xs: '-70px', sm: 20 },
-              right: { xs: '10px', sm: 20 },
-              width: { xs: 80, sm: 120, md: 150 },
-              height: { xs: 80, sm: 120, md: 150 },
+              ...(isPortrait ? {
+                top: '10px',
+                right: '10px',
+                width: '40px',
+                height: '40px',
+              } : {
+                top: { xs: '-70px', sm: 20 },
+                right: { xs: '10px', sm: 20 },
+                width: { xs: 80, sm: 120, md: 150 },
+                height: { xs: 80, sm: 120, md: 150 },
+              }),
               objectFit: 'contain',
               zIndex: 1,
+              display: { xs: 'block', sm: 'block' },
             }}
           />
           <Box
@@ -78,10 +111,15 @@ const Home = () => {
             alt="Biscuit the dog"
             sx={{
               position: 'absolute',
-              bottom: { xs: 10, sm: 20 },
-              right: { xs: 10, sm: 20 },
-              width: { xs: 80, sm: 120, md: 150 },
-              height: { xs: 80, sm: 120, md: 150 },
+              ...(isPortrait ? {
+                display: 'none'
+              } : {
+                bottom: { xs: 10, sm: 20 },
+                right: { xs: 10, sm: 20 },
+                width: { xs: 80, sm: 120, md: 150 },
+                height: { xs: 80, sm: 120, md: 150 },
+                display: { xs: 'block', sm: 'block' },
+              }),
               objectFit: 'contain',
               zIndex: 1,
             }}
@@ -92,10 +130,15 @@ const Home = () => {
             alt="Buckwheat the cat"
             sx={{
               position: 'absolute',
-              bottom: { xs: 10, sm: 20 },
-              left: { xs: 10, sm: 20 },
-              width: { xs: 80, sm: 120, md: 150 },
-              height: { xs: 80, sm: 120, md: 150 },
+              ...(isPortrait ? {
+                display: 'none'
+              } : {
+                bottom: { xs: 10, sm: 20 },
+                left: { xs: 10, sm: 20 },
+                width: { xs: 80, sm: 120, md: 150 },
+                height: { xs: 80, sm: 120, md: 150 },
+                display: { xs: 'block', sm: 'block' },
+              }),
               objectFit: 'contain',
               zIndex: 1,
             }}
