@@ -37,7 +37,7 @@ const Home = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            py: { xs: 4, sm: 8 },  // Less padding on mobile
+            py: { xs: 8, sm: 8 },  // Increased top padding on mobile
             position: 'relative',
             width: '100%',
             margin: 0
@@ -50,8 +50,8 @@ const Home = () => {
             alt="Biscuit the dog"
             sx={{
               position: 'absolute',
-              top: { xs: 10, sm: 20 },
-              left: { xs: 10, sm: 20 },
+              top: { xs: '-70px', sm: 20 },
+              left: { xs: '10px', sm: 20 },
               width: { xs: 80, sm: 120, md: 150 },
               height: { xs: 80, sm: 120, md: 150 },
               objectFit: 'contain',
@@ -64,8 +64,8 @@ const Home = () => {
             alt="Buckwheat the cat"
             sx={{
               position: 'absolute',
-              top: { xs: 10, sm: 20 },
-              right: { xs: 10, sm: 20 },
+              top: { xs: '-70px', sm: 20 },
+              right: { xs: '10px', sm: 20 },
               width: { xs: 80, sm: 120, md: 150 },
               height: { xs: 80, sm: 120, md: 150 },
               objectFit: 'contain',
