@@ -220,7 +220,7 @@ const Home = () => {
                 fontStyle: 'italic'
               }}
             >
-              September 20th, 2025
+              May 17th, 2025
             </Typography>
             <Typography variant="h6">
               In Our Backyard
