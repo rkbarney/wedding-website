@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Home = () => {
   // Get the base URL for images
-  const baseUrl = import.meta.env.DEV ? '' : '/wedding-website';
+  const baseUrl = import.meta.env.BASE_URL;
 
   return (
     <Box 
@@ -12,7 +12,8 @@ const Home = () => {
         width: '100%',
         minHeight: '100vh',
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: '#fff'
       }}
     >
       <Container 
@@ -38,7 +39,7 @@ const Home = () => {
           {/* Pet Corner Images */}
           <Box
             component="img"
-            src={`${baseUrl}/images/biscuit2.PNG`}
+            src={`${baseUrl}images/biscuit2.PNG`}
             alt="Biscuit the dog"
             sx={{
               position: 'absolute',
@@ -52,7 +53,7 @@ const Home = () => {
           />
           <Box
             component="img"
-            src={`${baseUrl}/images/buckwheat1.PNG`}
+            src={`${baseUrl}images/buckwheat1.PNG`}
             alt="Buckwheat the cat"
             sx={{
               position: 'absolute',
@@ -66,7 +67,7 @@ const Home = () => {
           />
           <Box
             component="img"
-            src={`${baseUrl}/images/biscuit1.PNG`}
+            src={`${baseUrl}images/biscuit1.PNG`}
             alt="Biscuit the dog"
             sx={{
               position: 'absolute',
@@ -80,7 +81,7 @@ const Home = () => {
           />
           <Box
             component="img"
-            src={`${baseUrl}/images/buckwheat2.PNG`}
+            src={`${baseUrl}images/buckwheat2.PNG`}
             alt="Buckwheat the cat"
             sx={{
               position: 'absolute',
@@ -134,7 +135,7 @@ const Home = () => {
           >
             <Box
               component="img"
-              src={`${baseUrl}/images/Richard and Emily.jpeg`}
+              src={`${baseUrl}images/Richard and Emily.jpeg`}
               alt="Emily and Richard"
               sx={{
                 width: '100%',
