@@ -5,38 +5,33 @@ import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import Registry from './pages/Registry';
 import RSVP from './pages/RSVP';
+import Schedule from './pages/Schedule';
+import './App.css';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#2c3e50',
+      main: '#89CFF0',
     },
     secondary: {
-      main: '#e74c3c',
+      main: '#FF9E80',
     },
     background: {
-      default: '#f5f5f5',
+      default: '#E6F3FF',
+      paper: '#E6F3FF',
     },
+    mode: 'light'
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    h1: {
-      fontFamily: '"Playfair Display", serif',
-    },
-    h2: {
-      fontFamily: '"Playfair Display", serif',
-    },
-    h3: {
-      fontFamily: '"Playfair Display", serif',
-    },
-    h4: {
-      fontFamily: '"Playfair Display", serif',
-    },
-    h5: {
-      fontFamily: '"Playfair Display", serif',
-    },
-    h6: {
-      fontFamily: '"Playfair Display", serif',
+    fontFamily: '"Playfair Display", "Roboto", "Arial", sans-serif',
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: '#E6F3FF',
+        },
+      },
     },
   },
 });
@@ -51,9 +46,10 @@ function App() {
         <div className="App">
           <Navigation />
           <Routes>
-            <Route index element={<Home />} />
-            <Route path="registry" element={<Registry />} />
-            <Route path="rsvp" element={<RSVP />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/registry" element={<Registry />} />
+            <Route path="/rsvp" element={<RSVP />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
