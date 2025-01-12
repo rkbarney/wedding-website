@@ -2,6 +2,9 @@ import { Container, Typography, Box, Paper } from '@mui/material';
 import { motion } from 'framer-motion';
 
 const Home = () => {
+  // Get the base URL for images
+  const baseUrl = import.meta.env.DEV ? '' : '/wedding-website';
+
   return (
     <Box 
       sx={{ 
@@ -35,7 +38,7 @@ const Home = () => {
           {/* Pet Corner Images */}
           <Box
             component="img"
-            src="/images/biscuit2.PNG"
+            src={`${baseUrl}/images/biscuit2.PNG`}
             alt="Biscuit the dog"
             sx={{
               position: 'absolute',
@@ -49,7 +52,7 @@ const Home = () => {
           />
           <Box
             component="img"
-            src="/images/buckwheat1.PNG"
+            src={`${baseUrl}/images/buckwheat1.PNG`}
             alt="Buckwheat the cat"
             sx={{
               position: 'absolute',
@@ -63,7 +66,7 @@ const Home = () => {
           />
           <Box
             component="img"
-            src="/images/biscuit1.PNG"
+            src={`${baseUrl}/images/biscuit1.PNG`}
             alt="Biscuit the dog"
             sx={{
               position: 'absolute',
@@ -77,7 +80,7 @@ const Home = () => {
           />
           <Box
             component="img"
-            src="/images/buckwheat2.PNG"
+            src={`${baseUrl}/images/buckwheat2.PNG`}
             alt="Buckwheat the cat"
             sx={{
               position: 'absolute',
@@ -131,7 +134,7 @@ const Home = () => {
           >
             <Box
               component="img"
-              src="/images/Richard and Emily.jpeg"
+              src={`${baseUrl}/images/Richard and Emily.jpeg`}
               alt="Emily and Richard"
               sx={{
                 width: '100%',
