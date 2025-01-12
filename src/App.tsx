@@ -1,53 +1,60 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
-import Schedule from './pages/Schedule';
-import RSVP from './pages/RSVP';
 import Registry from './pages/Registry';
-import './App.css';
+import RSVP from './pages/RSVP';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#89CFF0', // Baby blue
+      main: '#2c3e50',
     },
     secondary: {
-      main: '#FF9E80', // Coral/peach - complementary to baby blue
+      main: '#e74c3c',
     },
     background: {
-      default: '#E6F3FF', // Light baby blue for background
-      paper: '#E6F3FF', // Light baby blue for paper elements
+      default: '#f5f5f5',
     },
-    mode: 'light'
   },
   typography: {
-    fontFamily: '"Playfair Display", "Roboto", "Arial", sans-serif',
-  },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        body: {
-          backgroundColor: '#E6F3FF',
-        },
-      },
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    h1: {
+      fontFamily: '"Playfair Display", serif',
+    },
+    h2: {
+      fontFamily: '"Playfair Display", serif',
+    },
+    h3: {
+      fontFamily: '"Playfair Display", serif',
+    },
+    h4: {
+      fontFamily: '"Playfair Display", serif',
+    },
+    h5: {
+      fontFamily: '"Playfair Display", serif',
+    },
+    h6: {
+      fontFamily: '"Playfair Display", serif',
     },
   },
 });
 
 function App() {
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
+      <Router basename={baseUrl}>
         <div className="App">
           <Navigation />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/rsvp" element={<RSVP />} />
-            <Route path="/registry" element={<Registry />} />
+            <Route index element={<Home />} />
+            <Route path="registry" element={<Registry />} />
+            <Route path="rsvp" element={<RSVP />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
       </Router>
