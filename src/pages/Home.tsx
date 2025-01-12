@@ -50,10 +50,10 @@ const Home = () => {
             alt="Biscuit the dog"
             sx={{
               position: 'absolute',
-              top: 20,
-              left: '-100px',
-              width: 150,
-              height: 150,
+              top: { xs: 10, sm: 20 },
+              left: { xs: 10, sm: 20 },
+              width: { xs: 80, sm: 120, md: 150 },
+              height: { xs: 80, sm: 120, md: 150 },
               objectFit: 'contain',
               zIndex: 1,
             }}
@@ -64,10 +64,10 @@ const Home = () => {
             alt="Buckwheat the cat"
             sx={{
               position: 'absolute',
-              top: 20,
-              right: '-100px',
-              width: 150,
-              height: 150,
+              top: { xs: 10, sm: 20 },
+              right: { xs: 10, sm: 20 },
+              width: { xs: 80, sm: 120, md: 150 },
+              height: { xs: 80, sm: 120, md: 150 },
               objectFit: 'contain',
               zIndex: 1,
             }}
@@ -78,10 +78,10 @@ const Home = () => {
             alt="Biscuit the dog"
             sx={{
               position: 'absolute',
-              bottom: 20,
-              right: '-100px',
-              width: 150,
-              height: 150,
+              bottom: { xs: 10, sm: 20 },
+              right: { xs: 10, sm: 20 },
+              width: { xs: 80, sm: 120, md: 150 },
+              height: { xs: 80, sm: 120, md: 150 },
               objectFit: 'contain',
               zIndex: 1,
             }}
@@ -92,10 +92,10 @@ const Home = () => {
             alt="Buckwheat the cat"
             sx={{
               position: 'absolute',
-              bottom: 20,
-              left: '-100px',
-              width: 150,
-              height: 150,
+              bottom: { xs: 10, sm: 20 },
+              left: { xs: 10, sm: 20 },
+              width: { xs: 80, sm: 120, md: 150 },
+              height: { xs: 80, sm: 120, md: 150 },
               objectFit: 'contain',
               zIndex: 1,
             }}
