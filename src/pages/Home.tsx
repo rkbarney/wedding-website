@@ -14,15 +14,18 @@ const Home = () => {
         display: 'flex',
         justifyContent: 'center',
         backgroundColor: '#fff',
-        overflow: 'hidden'  
+        overflow: 'hidden',  // Prevent horizontal scroll
+        margin: 0,
+        padding: 0
       }}
     >
       <Container 
         sx={{ 
           position: 'relative',
-          maxWidth: { xs: '100%', sm: '1200px' },
-          px: { xs: 2, sm: 4, md: 6 },
-          mx: 'auto'
+          maxWidth: '1200px !important',
+          px: { xs: 0, sm: 4, md: 6 },  // Remove padding on mobile
+          mx: 'auto',
+          width: '100%'
         }}
       >
         <Box
@@ -34,12 +37,13 @@ const Home = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            py: { xs: 4, sm: 8 },
+            py: { xs: 4, sm: 8 },  // Less padding on mobile
             position: 'relative',
-            width: '100%'
+            width: '100%',
+            margin: 0
           }}
         >
-          {/* Pet Corner Images - Hide on mobile */}
+          {/* Pet Corner Images */}
           <Box
             component="img"
             src={`${baseUrl}images/biscuit2.PNG`}
@@ -47,12 +51,11 @@ const Home = () => {
             sx={{
               position: 'absolute',
               top: 20,
-              left: { xs: '-50px', sm: '-100px' },
-              width: { xs: 100, sm: 150 },
-              height: { xs: 100, sm: 150 },
+              left: '-100px',
+              width: 150,
+              height: 150,
               objectFit: 'contain',
               zIndex: 1,
-              display: { xs: 'none', sm: 'block' }
             }}
           />
           <Box
@@ -62,12 +65,11 @@ const Home = () => {
             sx={{
               position: 'absolute',
               top: 20,
-              right: { xs: '-50px', sm: '-100px' },
-              width: { xs: 100, sm: 150 },
-              height: { xs: 100, sm: 150 },
+              right: '-100px',
+              width: 150,
+              height: 150,
               objectFit: 'contain',
               zIndex: 1,
-              display: { xs: 'none', sm: 'block' }
             }}
           />
           <Box
@@ -77,12 +79,11 @@ const Home = () => {
             sx={{
               position: 'absolute',
               bottom: 20,
-              right: { xs: '-50px', sm: '-100px' },
-              width: { xs: 100, sm: 150 },
-              height: { xs: 100, sm: 150 },
+              right: '-100px',
+              width: 150,
+              height: 150,
               objectFit: 'contain',
               zIndex: 1,
-              display: { xs: 'none', sm: 'block' }
             }}
           />
           <Box
@@ -92,12 +93,11 @@ const Home = () => {
             sx={{
               position: 'absolute',
               bottom: 20,
-              left: { xs: '-50px', sm: '-100px' },
-              width: { xs: 100, sm: 150 },
-              height: { xs: 100, sm: 150 },
+              left: '-100px',
+              width: 150,
+              height: 150,
               objectFit: 'contain',
               zIndex: 1,
-              display: { xs: 'none', sm: 'block' }
             }}
           />
 
@@ -105,74 +105,98 @@ const Home = () => {
             variant="h1"
             component="h1"
             sx={{
-              fontSize: { xs: '2rem', sm: '2.5rem', md: '4rem' },
+              fontSize: { xs: '2.5rem', md: '4rem' },
+              mb: 4,
               textAlign: 'center',
-              mb: { xs: 2, sm: 4 },
               fontFamily: '"Playfair Display", serif',
-              color: 'text.primary'
             }}
           >
             Emily & Richard
           </Typography>
-
+          
           <Typography
-            variant="h2"
+            variant="h4"
             sx={{
-              fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' },
+              mb: 4,
               textAlign: 'center',
-              mb: { xs: 3, sm: 6 },
               fontFamily: '"Playfair Display", serif',
-              color: 'text.primary'
             }}
           >
             Are getting married!
           </Typography>
 
+          {/* Featured Photo */}
           <Box
-            component={Paper}
-            elevation={3}
+            component={motion.div}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             sx={{
               width: '100%',
-              maxWidth: { xs: '100%', sm: '80%', md: '60%' },
+              maxWidth: 600,
+              mb: 4,
               borderRadius: 2,
               overflow: 'hidden',
-              mb: { xs: 3, sm: 6 }
+              boxShadow: 3,
             }}
           >
             <Box
               component="img"
-              src={`${baseUrl}images/engagement.jpg`}
-              alt="Engagement photo"
+              src={`${baseUrl}images/Richard and Emily.jpeg`}
+              alt="Emily and Richard"
               sx={{
                 width: '100%',
                 height: 'auto',
-                display: 'block'
+                display: 'block',
               }}
             />
           </Box>
 
-          <Typography
-            variant="h3"
+          <Paper
+            elevation={3}
             sx={{
-              fontSize: { xs: '1.5rem', sm: '2rem' },
+              p: { xs: 2, sm: 4 },  // Less padding on mobile
+              maxWidth: '100%',      // Full width on mobile
+              width: '100%',
               textAlign: 'center',
-              mb: 2,
-              fontFamily: '"Playfair Display", serif',
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
+              mx: { xs: 2, sm: 'auto' },  // Add margin on mobile
+              boxSizing: 'border-box'      // Include padding in width calculation
             }}
           >
-            Join us on
-          </Typography>
+            <Typography variant="h5" gutterBottom>
+              Join us on
+            </Typography>
+            <Typography
+              variant="h3"
+              sx={{
+                mt: 4,
+                mb: 6,
+                color: 'secondary.main',
+                fontFamily: '"Playfair Display", serif',
+                fontStyle: 'italic'
+              }}
+            >
+              September 20th, 2025
+            </Typography>
+            <Typography variant="h6">
+              In Our Backyard
+            </Typography>
+            <Typography variant="subtitle1">
+              4390 Jana Vista Rd, El Sobrante, CA
+            </Typography>
+          </Paper>
 
           <Typography
-            variant="h2"
+            variant="caption"
             sx={{
-              fontSize: { xs: '2rem', sm: '3rem' },
+              mt: 4,
               textAlign: 'center',
-              color: '#FF9E80',
-              fontFamily: '"Playfair Display", serif',
+              opacity: 0.7,
+              fontStyle: 'italic'
             }}
           >
-            September 20th, 2024
+            Photo by James Barney. Illustrations by Emily.
           </Typography>
         </Box>
       </Container>
