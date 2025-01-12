@@ -5,7 +5,7 @@ const Schedule = () => {
   const events = [
     {
       time: '4:00 PM',
-      title: 'Champagne and Oyster Welcome',
+      title: 'Arrive',
       description: 'Join us for refreshments as we welcome you to our celebration'
     },
     {
