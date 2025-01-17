@@ -1,13 +1,18 @@
-import { Container, Typography, Box, Paper } from '@mui/material';
+import { Container, Typography, Box, Paper, Button } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-  const [showOverlay, setShowOverlay] = useState(true);
+  const [showOverlay, setShowOverlay] = useState(() => {
+    // Check if this is the first load in this session
+    return !sessionStorage.getItem('hasVisitedThisSession');
+  });
   const [containerDimensions, setContainerDimensions] = useState({ width: 0, height: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const baseUrl = import.meta.env.BASE_URL;
   const [isPortrait, setIsPortrait] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const checkOrientation = () => {
@@ -38,12 +43,16 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowOverlay(false);
-    }, 2000);
+    if (showOverlay) {
+      const timer = setTimeout(() => {
+        setShowOverlay(false);
+        // Set the flag in sessionStorage after the animation
+        sessionStorage.setItem('hasVisitedThisSession', 'true');
+      }, 2000);
 
-    return () => clearTimeout(timer);
-  }, []);
+      return () => clearTimeout(timer);
+    }
+  }, [showOverlay]);
 
   return (
     <>
@@ -215,29 +224,33 @@ const Home = () => {
             }}
           />
 
-          <Typography
-            variant="h1"
-            component="h1"
-            sx={{
-              fontSize: { xs: '2.5rem', md: '4rem' },
-              mb: 4,
-              textAlign: 'center',
-              fontFamily: '"Playfair Display", serif',
-            }}
-          >
-            Richard & Emily
-          </Typography>
-          
-          <Typography
-            variant="h4"
+          <Box
             sx={{
               mb: 4,
               textAlign: 'center',
-              fontFamily: '"Playfair Display", serif',
             }}
           >
-            are getting married!
-          </Typography>
+            <Typography
+              variant="h1"
+              component="h1"
+              sx={{
+                fontSize: { xs: '2.5rem', md: '4rem' },
+                mb: 1,
+                fontFamily: '"Playfair Display", serif',
+              }}
+            >
+              Richard & Emily
+            </Typography>
+            
+            <Typography
+              variant="h4"
+              sx={{
+                fontFamily: '"Playfair Display", serif',
+              }}
+            >
+              are getting married!
+            </Typography>
+          </Box>
 
           {/* Featured Photo */}
           <Box
@@ -284,8 +297,8 @@ const Home = () => {
             <Typography
               variant="h3"
               sx={{
-                mt: 4,
-                mb: 6,
+                mt: 1,
+                mb: 2,
                 color: 'secondary.main',
                 fontFamily: '"Playfair Display", serif',
                 fontStyle: 'italic'
@@ -293,13 +306,37 @@ const Home = () => {
             >
               May 17th, 2025
             </Typography>
-            <Typography variant="h6">
+            <Typography variant="h6" sx={{ mb: 1 }}>
               In our backyard at
             </Typography>
             <Typography variant="subtitle1">
-              4390 Jana Vista Rd, El Sobrante, CA 94803
+              4390 Jana Vista Rd,<br />
+              El Sobrante, CA 94803
             </Typography>
           </Paper>
+
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => navigate('/rsvp')}
+            sx={{
+              mt: 4,
+              mb: 2,
+              px: 4,
+              py: 1.5,
+              fontSize: '1.2rem',
+              fontFamily: '"Playfair Display", serif',
+              backgroundColor: 'secondary.main',
+              color: 'white',
+              '&:hover': {
+                backgroundColor: 'secondary.dark',
+              },
+              borderRadius: 2,
+              boxShadow: 2,
+            }}
+          >
+            RSVP Now
+          </Button>
 
           <Typography
             variant="caption"
