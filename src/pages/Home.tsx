@@ -347,7 +347,7 @@ const Home = () => {
               fontStyle: 'italic'
             }}
           >
-            Photo by James Barney. Illustrations by Emily.
+            Illustrations by Emily.
           </Typography>
         </Box>
       </Container>
