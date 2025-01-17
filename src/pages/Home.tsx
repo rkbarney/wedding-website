@@ -1,9 +1,11 @@
 import { Container, Typography, Box, Paper } from '@mui/material';
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState, useRef } from 'react';
 
 const Home = () => {
-  // Get the base URL for images
+  const [showOverlay, setShowOverlay] = useState(true);
+  const [containerDimensions, setContainerDimensions] = useState({ width: 0, height: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
   const baseUrl = import.meta.env.BASE_URL;
   const [isPortrait, setIsPortrait] = useState(false);
 
@@ -11,38 +13,107 @@ const Home = () => {
     const checkOrientation = () => {
       setIsPortrait(window.innerHeight > window.innerWidth);
     };
-
-    // Check orientation initially
+    
     checkOrientation();
-
-    // Add event listener for orientation changes
     window.addEventListener('resize', checkOrientation);
-
-    // Cleanup
+    
     return () => window.removeEventListener('resize', checkOrientation);
   }, []);
 
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setContainerDimensions({
+          width: rect.width,
+          height: window.innerHeight - 64
+        });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowOverlay(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <Box 
-      sx={{ 
-        position: 'relative',
-        width: '100%',
-        minHeight: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        backgroundColor: '#fff',
-        overflow: 'hidden',  // Prevent horizontal scroll
-        margin: 0,
-        padding: 0
-      }}
-    >
-      <Container 
+    <>
+      <AnimatePresence>
+        {showOverlay && (
+          <Box
+            component={motion.div}
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ 
+              opacity: 0,
+              filter: "blur(10px)",
+              scale: 1.1
+            }}
+            transition={{ 
+              duration: 2,
+              ease: "easeOut"
+            }}
+            sx={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'white',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 9999,
+            }}
+          >
+            <Box
+              sx={{
+                width: containerDimensions.width ? `${containerDimensions.width}px` : '100%',
+                height: containerDimensions.height ? `${containerDimensions.height}px` : '90vh',
+                maxWidth: '1200px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                mx: { xs: 2, sm: 4, md: 6 },
+              }}
+            >
+              <Box
+                component="img"
+                src={`${baseUrl}images/invite_vertical.png`}
+                alt="Wedding Invitation"
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                }}
+              />
+            </Box>
+          </Box>
+        )}
+      </AnimatePresence>
+
+      <Container
+        ref={containerRef}
+        component={motion.main}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2.5, delay: 0.1, ease: "easeOut"}}
         sx={{ 
           position: 'relative',
           maxWidth: '1200px !important',
-          px: { xs: 0, sm: 4, md: 6 },  // Remove padding on mobile
+          px: { xs: 2, sm: 4, md: 6 },
           mx: 'auto',
-          width: '100%'
+          width: '100%',
+          minHeight: '100vh',
         }}
       >
         <Box
@@ -54,7 +125,7 @@ const Home = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            py: { xs: 8, sm: 8 },  // Increased top padding on mobile
+            py: { xs: 8, sm: 8 },  
             position: 'relative',
             width: '100%',
             margin: 0
@@ -185,7 +256,7 @@ const Home = () => {
           >
             <Box
               component="img"
-              src={`${baseUrl}images/Richard and Emily 1.png`}
+              src={`${baseUrl}images/Richard and Emily 1.jpg`}
               alt="Emily and Richard"
               sx={{
                 width: '100%',
@@ -198,13 +269,13 @@ const Home = () => {
           <Paper
             elevation={3}
             sx={{
-              p: { xs: 2, sm: 4 },  // Less padding on mobile
-              maxWidth: '100%',      // Full width on mobile
+              p: { xs: 2, sm: 4 },  
+              maxWidth: '100%',      
               width: '100%',
               textAlign: 'center',
               backgroundColor: 'rgba(255, 255, 255, 0.9)',
-              mx: { xs: 2, sm: 'auto' },  // Add margin on mobile
-              boxSizing: 'border-box'      // Include padding in width calculation
+              mx: { xs: 2, sm: 'auto' },  
+              boxSizing: 'border-box'      
             }}
           >
             <Typography variant="h5" gutterBottom>
@@ -243,7 +314,7 @@ const Home = () => {
           </Typography>
         </Box>
       </Container>
-    </Box>
+    </>
   );
 };
 
