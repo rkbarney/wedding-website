@@ -154,7 +154,7 @@ const Home = () => {
               fontFamily: '"Playfair Display", serif',
             }}
           >
-            Emily & Richard
+            Richard & Emily
           </Typography>
           
           <Typography
@@ -165,7 +165,7 @@ const Home = () => {
               fontFamily: '"Playfair Display", serif',
             }}
           >
-            Are getting married!
+            are getting married!
           </Typography>
 
           {/* Featured Photo */}
@@ -185,7 +185,7 @@ const Home = () => {
           >
             <Box
               component="img"
-              src={`${baseUrl}images/Richard and Emily.jpeg`}
+              src={`${baseUrl}images/Richard and Emily 1.png`}
               alt="Emily and Richard"
               sx={{
                 width: '100%',
@@ -208,7 +208,7 @@ const Home = () => {
             }}
           >
             <Typography variant="h5" gutterBottom>
-              Join us on
+              Join us
             </Typography>
             <Typography
               variant="h3"
@@ -223,10 +223,10 @@ const Home = () => {
               May 17th, 2025
             </Typography>
             <Typography variant="h6">
-              In Our Backyard
+              In our backyard at
             </Typography>
             <Typography variant="subtitle1">
-              4390 Jana Vista Rd, El Sobrante, CA
+              4390 Jana Vista Rd, El Sobrante, CA 94803
             </Typography>
           </Paper>
 
