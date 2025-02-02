@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Registry from './pages/Registry';
 import RSVP from './pages/RSVP';
 import Schedule from './pages/Schedule';
+import FAQ from './pages/FAQ';
 import './App.css';
 
 const theme = createTheme({
@@ -62,6 +63,7 @@ function App() {
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/registry" element={<Registry />} />
             <Route path="/rsvp" element={<RSVP />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>

@@ -29,6 +29,7 @@ const Navigation = () => {
           { path: '/schedule', label: 'SCHEDULE' },
           { path: '/rsvp', label: 'RSVP' },
           { path: '/registry', label: 'REGISTRY' },
+          { path: '/faq', label: 'FAQ' },
         ].map(({ path, label }) => (
           <Button
             key={path}
