@@ -5,13 +5,15 @@ on:
     types: [opened, reopened, synchronize]
 
 permissions:
-  contents: write
+  contents: read
   pages: write
-  pull-requests: write
+  id-token: write
 
 jobs:
-  preview:
+  build:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
     steps:
       - uses: actions/checkout@v4
       
@@ -22,10 +24,14 @@ jobs:
       
       - run: npm install
       - run: npm run build
-      
-      - name: Deploy preview
-        uses: EndBug/pages-preview@v1
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          preview_token: ${{ secrets.GITHUB_TOKEN }}
-          build_dir: dist
-          preview_branch: gh-pages-preview
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          preview: true
