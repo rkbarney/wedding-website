@@ -6,22 +6,22 @@ const Schedule = () => {
     {
       time: '4:00 PM',
       title: 'Arrive',
-      description: 'Join us for refreshments as we welcome you to our celebration'
+      description: 'Join us as we welcome you to our celebration'
+    },
+    {
+      time: '4:30 PM',
+      title: 'Ceremony',
+      description: 'Gather with us as we exchange our vows'
     },
     {
       time: '5:00 PM',
-      title: 'Ceremony',
-      description: 'Gather with us as we exchange our vows'
+      title: 'Mingle & Appetizers',
+      description: 'Enjoy light refreshments and conversation'
     },
     {
       time: '6:00 PM',
       title: 'Dinner',
       description: 'Celebrate with us over a delicious meal'
-    },
-    {
-      time: '9:00 PM',
-      title: 'Afterparty',
-      description: 'Dance and celebrate into the night (Location TBD)'
     }
   ];
 
