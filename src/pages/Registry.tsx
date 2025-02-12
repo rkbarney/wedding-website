@@ -25,27 +25,47 @@ const Registry = () => {
           }}
         >
           Your presence at our wedding is the greatest gift of all. However, if
-          you wish to honor us with a gift, we have created a registry at Heath Ceramics.
+          you wish to honor us with a gift, we have created registries at Heath Ceramics
+          and MyRegistry.com.
         </Typography>
 
-        <Button
-          variant="contained"
-          color="primary"
-          href="https://heathceramics.myshopify.com/apps/registry/richard-and-emilys-wedding?shared_url=true"
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{
-            fontSize: '1.1rem',
-            padding: '12px 24px',
-            backgroundColor: 'primary.main',
-            mb: 4,
-            '&:hover': {
-              backgroundColor: 'primary.dark',
-            },
-          }}
-        >
-          Heath Ceramics Registry
-        </Button>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center', mb: 4 }}>
+          <Button
+            variant="contained"
+            color="primary"
+            href="https://heathceramics.myshopify.com/apps/registry/richard-and-emilys-wedding?shared_url=true"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              fontSize: '1.1rem',
+              padding: '12px 24px',
+              backgroundColor: 'primary.main',
+              '&:hover': {
+                backgroundColor: 'primary.dark',
+              },
+            }}
+          >
+            Heath Ceramics Registry
+          </Button>
+
+          <Button
+            variant="contained"
+            color="primary"
+            href="https://www.myregistry.com/giftlist/richardandemily"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              fontSize: '1.1rem',
+              padding: '12px 24px',
+              backgroundColor: 'primary.main',
+              '&:hover': {
+                backgroundColor: 'primary.dark',
+              },
+            }}
+          >
+            MyRegistry.com Registry
+          </Button>
+        </Box>
 
         <Typography
           variant="body1"
