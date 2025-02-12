@@ -7,6 +7,6 @@ export default defineConfig({
   assetsInclude: ['**/*.jpg', '**/*.png', '**/*.jpeg'],
   base: '/wedding-website/',
   build: {
-    outDir: 'dist',
+    outDir: 'dist'
   }
 })
