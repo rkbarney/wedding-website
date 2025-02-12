@@ -5,7 +5,7 @@ on:
     types: [opened, reopened, synchronize]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   pull-requests: write
 
@@ -26,5 +26,6 @@ jobs:
       - name: Deploy preview
         uses: EndBug/pages-preview@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          preview_token: ${{ secrets.GITHUB_TOKEN }}
           build_dir: dist
+          preview_branch: gh-pages-preview
